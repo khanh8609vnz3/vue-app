@@ -1,10 +1,16 @@
 <template>
 	<div class="home">
-		<slick ref="slick" :options="slickOptions">
+		<!-- <slick ref="slick" :options="slickOptions">
 			<div v-for="(img,index) in listImg" v-bind:key="index">
 				<h3>{{img}}</h3>
 			</div>
-		</slick>
+		</slick>-->
+		<b-badge href="#" variant="primary">Primary</b-badge>
+		<b-button disabled @click="log" block variant="danger">Log</b-button>
+		<b-container class="bv-example-row">
+			<b-spinner label="Spinning"/>
+			<b-spinner type="grow" label="Spinning"/>
+		</b-container>
 	</div>
 </template>
 
@@ -27,13 +33,16 @@ export default {
 				centerMode: true,
 				arrows: true
 			},
-			home: this.$route.query,
+			home: this.$route.query
 		};
 	},
 
 	mounted() {},
 
 	methods: {
+		log() {
+			console.log(this);
+		}
 	}
 };
 </script>
@@ -54,8 +63,8 @@ export default {
 h3 {
 	background: orange;
 	color: black;
-    font-size: 14px;
-    font-weight: normal;
+	font-size: 14px;
+	font-weight: normal;
 	line-height: 100px;
 	margin: 10px;
 	padding: 2%;
