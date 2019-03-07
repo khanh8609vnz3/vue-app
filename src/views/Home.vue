@@ -1,17 +1,5 @@
 <template>
 	<div class="home">
-		<!--<div id="get-tasks">-->
-		<!--<form @submit.prevent="addTask">-->
-		<!--<input class="form-control"-->
-		<!--:value="newTask"-->
-		<!--@change="getTask"-->
-		<!--placeholder="I need to...">-->
-		<!--<br>-->
-		<!--<button type="submit" class="btn btn-primary">-->
-		<!--<i class="fa fa-plus"></i> New Task-->
-		<!--</button>-->
-		<!--</form>-->
-		<!--</div>-->
 		<slick ref="slick" :options="slickOptions">
 			<div v-for="(img,index) in listImg" v-bind:key="index">
 				<h3>{{img}}</h3>
@@ -40,33 +28,12 @@ export default {
 				arrows: true
 			},
 			home: this.$route.query,
-			newTask: this.$store.state.newTask
 		};
 	},
 
 	mounted() {},
 
 	methods: {
-		next() {
-			this.$refs.slick.next();
-		},
-		prev() {
-			this.$refs.slick.prev();
-		},
-		reInit() {
-			// Helpful if you have to deal with v-for to update dynamic lists
-			this.$refs.slick.reSlick();
-		},
-
-		// addTask(e) {
-		//     // e.preventDefault();
-		//     // this.$store.dispatch('addTask')
-		//     // this.$store.dispatch('clearTask')
-		// },
-
-		getTask(e) {
-			this.$store.dispatch("getTask", e.target.value);
-		}
 	}
 };
 </script>
