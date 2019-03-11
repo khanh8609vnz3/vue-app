@@ -1,74 +1,53 @@
 <template>
-	<div class="home">
-		<!-- <slick ref="slick" :options="slickOptions">
-			<div v-for="(img,index) in listImg" v-bind:key="index">
-				<h3>{{img}}</h3>
-			</div>
-		</slick>-->
-		<b-badge href="#" variant="primary">Primary</b-badge>
-		<b-button disabled @click="log" block variant="danger">Log</b-button>
-		<b-container class="bv-example-row">
-			<b-spinner label="Spinning"/>
-			<b-spinner type="grow" label="Spinning"/>
-		</b-container>
-	</div>
+    <div id="home">
+        <v-container grid-list-md text-xs-center>
+            <v-layout row wrap>
+                <v-carousel>
+                    <v-carousel-item
+                            v-for="(item,i) in items"
+                            :key="i"
+                            :src="item.src"
+                    ></v-carousel-item>
+                </v-carousel>
+                <ClipContainer></ClipContainer>
+            </v-layout>
+        </v-container>
+    </div>
 </template>
 
 <script>
-import Slick from "vue-slick";
+    import ClipContainer from "../components/ClipContainer";
 
-export default {
-	name: "home",
-	components: {
-		Slick
-	},
+    export default {
+        name: "Home",
 
-	data() {
-		return {
-			listImg: ["Portal", "Container", "IaaS", "Object Storage"],
-			slickOptions: {
-				slidesToShow: 3,
-				slidesToScroll: 1,
-				dots: true,
-				centerMode: true,
-				arrows: true
-			},
-			home: this.$route.query
-		};
-	},
+        components: {ClipContainer},
 
-	mounted() {},
-
-	methods: {
-		log() {
-			console.log(this);
-		}
-	}
-};
+        data() {
+            return {
+                items: [
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg'
+                    },
+                    {
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+                    }
+                ]
+            }
+        },
+    };
 </script>
 
-<style>
-@import "../../node_modules/slick-carousel/slick/slick.css";
-@import "../../node_modules/slick-carousel/slick/slick-theme.css";
-
-.slick-prev:before,
-.slick-next:before {
-	color: blue;
-}
-
-.home {
-	width: 1000px;
-	margin: 0 auto;
-}
-h3 {
-	background: orange;
-	color: black;
-	font-size: 14px;
-	font-weight: normal;
-	line-height: 100px;
-	margin: 10px;
-	padding: 2%;
-	position: relative;
-	text-align: center;
-}
+<style scoped>
+    .v-carousel {
+        height: 200px !important;
+        width: 90%;
+        margin: 0 auto;
+    }
 </style>
